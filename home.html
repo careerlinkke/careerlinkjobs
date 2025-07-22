@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-white">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerLink | Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/@heroicons/vue@1.0.6/outline.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .dropdown:hover .dropdown-menu { display: block; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+  <!-- NAVBAR -->
+  <header class="bg-gray-800 shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <a href="index.html" class="text-2xl font-bold text-green-400">CareerLink</a>
+        <div class="relative dropdown">
+          <button class="text-white focus:outline-none font-semibold">Menu ▼</button>
+          <div class="absolute right-0 mt-2 w-48 bg-white text-black rounded-md shadow-lg py-1 dropdown-menu hidden">
+            <a href="home.html" class="block px-4 py-2 hover:bg-gray-100">Home</a>
+            <a href="jobs.html" class="block px-4 py-2 hover:bg-gray-100">Browse Jobs</a>
+            <a href="how-it-works.html" class="block px-4 py-2 hover:bg-gray-100">How It Works</a>
+            <a href="profile.html" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+            <a href="chat.html" class="block px-4 py-2 hover:bg-gray-100">Chat</a>
+            <a href="contact.html" class="block px-4 py-2 hover:bg-gray-100">Contact</a>
+            <a href="faq.html" class="block px-4 py-2 hover:bg-gray-100">FAQ</a>
+            <a href="terms.html" class="block px-4 py-2 hover:bg-gray-100">Terms</a>
+            <a href="privacy-policy.html" class="block px-4 py-2 hover:bg-gray-100">Privacy</a>
+            <a href="index.html" onclick="logout()" class="block px-4 py-2 text-red-500 hover:bg-gray-100">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="text-center py-16 px-4 bg-gray-900">
+    <h1 class="text-4xl md:text-5xl font-bold text-green-400">Find Your Dream Job with CareerLink</h1>
+    <p class="mt-4 text-lg">Explore the latest job listings and apply easily with guaranteed support.</p>
+    <a href="jobs.html" class="mt-6 inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold">Browse Jobs</a>
+  </section>
+
+  <!-- FEATURED JOBS -->
+  <section class="max-w-6xl mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-green-400 mb-8">Featured Jobs</h2>
+    <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Sample Job -->
+      <div class="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold">Customer Service Officer</h3>
+        <p class="text-sm text-gray-300 mt-1">Nairobi | KSh 35,000</p>
+        <p class="mt-3 text-gray-400">Handle client communication and resolve issues professionally.</p>
+        <a href="application.html?job=customer-service" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded">Apply</a>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold">Front Desk Assistant</h3>
+        <p class="text-sm text-gray-300 mt-1">Nairobi | KSh 30,000</p>
+        <p class="mt-3 text-gray-400">Welcome visitors, manage calls and support admin tasks.</p>
+        <a href="application.html?job=front-desk" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded">Apply</a>
+      </div>
+
+      <div class="bg-gray-800 p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-semibold">Office Messenger</h3>
+        <p class="text-sm text-gray-300 mt-1">Nairobi | KSh 25,000</p>
+        <p class="mt-3 text-gray-400">Run errands and deliver important documents around Nairobi.</p>
+        <a href="application.html?job=messenger" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded">Apply</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK LINKS -->
+  <section class="bg-gray-800 py-8">
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div>
+        <h4 class="text-green-400 font-semibold mb-2">Job Seekers</h4>
+        <ul>
+          <li><a href="jobs.html" class="text-gray-300 hover:underline">Find Jobs</a></li>
+          <li><a href="signup.html" class="text-gray-300 hover:underline">Register</a></li>
+          <li><a href="login.html" class="text-gray-300 hover:underline">Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-green-400 font-semibold mb-2">Support</h4>
+        <ul>
+          <li><a href="contact.html" class="text-gray-300 hover:underline">Contact Us</a></li>
+          <li><a href="faq.html" class="text-gray-300 hover:underline">FAQ</a></li>
+          <li><a href="terms.html" class="text-gray-300 hover:underline">Terms</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-green-400 font-semibold mb-2">Employers</h4>
+        <ul>
+          <li><a href="admin-dashboard.html" class="text-gray-300 hover:underline">Post a Job</a></li>
+          <li><a href="admin-users.html" class="text-gray-300 hover:underline">Manage Users</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-green-400 font-semibold mb-2">Connect</h4>
+        <ul>
+          <li><a href="mailto:careerlinkke@gmail.com" class="text-gray-300 hover:underline">Email Us</a></li>
+          <li><a href="https://wa.me/254102960463" class="text-gray-300 hover:underline">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center text-gray-400 text-sm py-4 bg-gray-900">
+    &copy; 2025 CareerLink. All rights reserved.
+  </footer>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("careerUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

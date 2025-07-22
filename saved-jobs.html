@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerLink | Saved Jobs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-800 p-4 shadow-lg flex justify-between items-center">
+    <a href="home.html" class="text-green-400 font-bold text-xl">CareerLink</a>
+    <ul class="flex space-x-4 text-sm">
+      <li><a href="jobs.html" class="hover:text-green-400">Browse Jobs</a></li>
+      <li><a href="profile.html" class="hover:text-green-400">Profile</a></li>
+      <li><a href="saved-jobs.html" class="text-green-400 font-semibold">Saved Jobs</a></li>
+      <li><a href="#" id="logoutBtn" class="hover:text-red-500">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Content -->
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-semibold text-green-400 mb-6" data-aos="fade-right">Your Saved Jobs</h1>
+    <div id="savedJobsContainer" class="grid md:grid-cols-2 gap-6">
+      <!-- Jobs will be inserted here -->
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-400 py-6 text-center">
+    &copy; 2025 CareerLink. All rights reserved.
+  </footer>
+
+  <script>
+    // Redirect if not logged in
+    const isLoggedIn = localStorage.getItem('careerlinkUser');
+    if (!isLoggedIn) {
+      window.location.href = "login.html";
+    }
+
+    const savedJobs = JSON.parse(localStorage.getItem('savedJobs')) || [];
+    const container = document.getElementById('savedJobsContainer');
+
+    function renderSavedJobs() {
+      container.innerHTML = "";
+
+      if (savedJobs.length === 0) {
+        container.innerHTML = `<p class="text-gray-400">You have not saved any jobs yet.</p>`;
+        return;
+      }
+
+      savedJobs.forEach((job, index) => {
+        const jobCard = document.createElement("div");
+        jobCard.className = "bg-gray-800 p-6 rounded-lg shadow-md relative";
+
+        jobCard.innerHTML = `
+          <h2 class="text-xl font-bold text-white mb-2">${job.title}</h2>
+          <p class="text-green-300">${job.location}</p>
+          <p class="text-sm text-gray-300 mt-2">${job.salary}</p>
+          <p class="text-sm text-gray-400 mt-1">${job.description}</p>
+          <div class="flex justify-between items-center mt-4">
+            <a href="job-detail.html?id=${job.id}" class="text-sm text-green-400 hover:underline">View Details</a>
+            <button onclick="deleteJob(${index})" class="text-sm text-red-500 hover:underline">Delete</button>
+          </div>
+        `;
+
+        container.appendChild(jobCard);
+      });
+    }
+
+    function deleteJob(index) {
+      savedJobs.splice(index, 1);
+      localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
+      renderSavedJobs();
+    }
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("careerlinkUser");
+      window.location.href = "login.html";
+    });
+
+    renderSavedJobs();
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init(); feather.replace();</script>
+</body>
+</html>

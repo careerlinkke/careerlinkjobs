@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerLink | FAQ</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-800 p-4 shadow flex justify-between items-center">
+    <a href="home.html" class="text-green-400 text-xl font-bold">CareerLink</a>
+    <ul class="flex space-x-4 text-sm">
+      <li><a href="jobs.html" class="hover:text-green-400">Browse Jobs</a></li>
+      <li><a href="profile.html" class="hover:text-green-400">Profile</a></li>
+      <li><a href="saved-jobs.html" class="hover:text-green-400">Saved Jobs</a></li>
+      <li><a href="faq.html" class="text-green-400 font-semibold">FAQ</a></li>
+      <li><a href="#" id="logoutBtn" class="hover:text-red-500">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="py-12 px-6 text-center bg-gray-800">
+    <h1 class="text-3xl font-bold text-green-400 mb-3" data-aos="fade-down">Frequently Asked Questions</h1>
+    <p class="text-gray-300 max-w-2xl mx-auto" data-aos="fade-up">Got questions? We've got answers. Here are some of the most common queries we receive from job seekers and employers.</p>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="max-w-4xl mx-auto px-6 py-10">
+    <div class="space-y-6" data-aos="fade-up">
+
+      <!-- Job Seeker Questions -->
+      <h2 class="text-xl font-semibold text-green-400">Job Seeker Questions</h2>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">1. How do I apply for a job?</h3>
+        <p class="text-gray-300 mt-1">To apply, sign in to your account, browse jobs, and click "Apply". Complete your details and follow the payment step if required.</p>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">2. What is Direct Placement vs Interview Booking?</h3>
+        <p class="text-gray-300 mt-1">Direct Placement (KSh 950) guarantees you a job placement. Interview Booking (KSh 350) schedules you for an interview and prepares you for success.</p>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">3. Why do I need to pay to apply?</h3>
+        <p class="text-gray-300 mt-1">The small fee filters out unserious applicants and supports faster placement, preparation, and employer coordination.</p>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">4. Can I get a refund?</h3>
+        <p class="text-gray-300 mt-1">Refunds are only applicable if a job is canceled or not available after payment. Contact our support within 24 hours.</p>
+      </div>
+
+      <!-- Employer Questions -->
+      <h2 class="text-xl font-semibold text-green-400 mt-10">Employer Questions</h2>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">1. How do I post a job?</h3>
+        <p class="text-gray-300 mt-1">Create an employer account and fill in the job details. Premium listings cost KSh 550 and appear as featured jobs.</p>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">2. How long will my job stay live?</h3>
+        <p class="text-gray-300 mt-1">Your job post will remain live for 21 days unless manually removed. Featured jobs are pinned on the homepage for 7 days.</p>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-lg">
+        <h3 class="font-semibold text-white">3. Can I hire candidates directly?</h3>
+        <p class="text-gray-300 mt-1">Yes, you can contact shortlisted candidates directly from your dashboard once they apply.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center text-gray-400 py-6 text-sm">
+    &copy; 2025 CareerLink. All rights reserved. | 
+    <a href="terms.html" class="text-green-400 hover:underline">Terms</a> | 
+    <a href="privacy-policy.html" class="text-green-400 hover:underline">Privacy Policy</a>
+  </footer>
+
+  <script>
+    // Redirect if not logged in
+    const isLoggedIn = localStorage.getItem('careerlinkUser');
+    if (!isLoggedIn) {
+      window.location.href = "login.html";
+    }
+
+    // Logout
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("careerlinkUser");
+      window.location.href = "login.html";
+    });
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init(); feather.replace();</script>
+</body>
+</html>

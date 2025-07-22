@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerLink | How It Works</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+<!-- Navbar -->
+<header class="bg-gray-800 shadow">
+  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="home.html" class="text-2xl font-bold text-green-400">CareerLink</a>
+    <nav class="space-x-4">
+      <a href="home.html" class="hover:text-green-400">Home</a>
+      <a href="jobs.html" class="hover:text-green-400">Browse Jobs</a>
+      <a href="how-it-works.html" class="text-green-400 font-semibold">How it Works</a>
+      <a href="contact.html" class="hover:text-green-400">Contact</a>
+      <a href="profile.html" class="hover:text-green-400">Profile</a>
+      <a href="#" onclick="logout()" class="text-red-400">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="py-16 px-4 max-w-6xl mx-auto text-center" data-aos="fade-down">
+  <h1 class="text-4xl font-bold text-green-400 mb-4">How CareerLink Works</h1>
+  <p class="text-gray-300 text-lg">Your journey to employment starts here. Whether you're a job seeker or employer, here's how CareerLink connects opportunity with talent.</p>
+</section>
+
+<!-- Job Seeker Steps -->
+<section class="py-12 bg-gray-800">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-white mb-10" data-aos="fade-up">For Job Seekers</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-900 p-6 rounded-lg shadow-md" data-aos="fade-right">
+        <div class="mb-4 text-green-400">
+          <i data-feather="user-plus" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">1. Register Your Account</h3>
+        <p class="text-gray-400">Sign up with your details and create a complete job seeker profile to start applying.</p>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-md" data-aos="fade-up">
+        <div class="mb-4 text-green-400">
+          <i data-feather="search" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">2. Browse Available Jobs</h3>
+        <p class="text-gray-400">Search through hundreds of verified job posts in your industry and location.</p>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-md" data-aos="fade-left">
+        <div class="mb-4 text-green-400">
+          <i data-feather="send" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">3. Apply & Pay Application Fee</h3>
+        <p class="text-gray-400">Choose between Direct Placement (KSh 950) or Interview Booking (KSh 350) and submit your application.</p>
+      </div>
+    </div>
+
+    <div class="mt-10 text-center" data-aos="fade-up">
+      <a href="signup.html" class="inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded">
+        Get Started
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Employer Steps -->
+<section class="py-12 bg-gray-900">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-white mb-10" data-aos="fade-up">For Employers</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md" data-aos="fade-right">
+        <div class="mb-4 text-green-400">
+          <i data-feather="clipboard" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">1. Submit a Job Post</h3>
+        <p class="text-gray-400">List a job with full description and pay KSh 550 for premium placement & faster pairing.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md" data-aos="fade-up">
+        <div class="mb-4 text-green-400">
+          <i data-feather="users" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">2. Review Candidates</h3>
+        <p class="text-gray-400">Access shortlisted, vetted applicants and communicate directly with them on the platform.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg shadow-md" data-aos="fade-left">
+        <div class="mb-4 text-green-400">
+          <i data-feather="check-circle" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">3. Hire & Rate</h3>
+        <p class="text-gray-400">Hire the perfect match and rate your hiring experience to improve our services.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="py-16 bg-gray-800">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center text-white mb-8" data-aos="fade-up">Why Choose CareerLink?</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+        <i data-feather="shield" class="w-10 h-10 mx-auto text-green-400 mb-2"></i>
+        <h4 class="font-semibold text-lg">Trusted & Secure</h4>
+        <p class="text-gray-400">We verify all job postings and protect your data with top security.</p>
+      </div>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+        <i data-feather="zap" class="w-10 h-10 mx-auto text-green-400 mb-2"></i>
+        <h4 class="font-semibold text-lg">Fast Placement</h4>
+        <p class="text-gray-400">Get placed faster through our Direct Placement and interview support services.</p>
+      </div>
+      <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+        <i data-feather="dollar-sign" class="w-10 h-10 mx-auto text-green-400 mb-2"></i>
+        <h4 class="font-semibold text-lg">Affordable Fees</h4>
+        <p class="text-gray-400">Transparent, one-time application and post fees. No hidden costs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-800 py-6 text-center text-gray-400">
+  <p>&copy; 2025 CareerLink. All rights reserved.</p>
+  <div class="mt-2 space-x-4">
+    <a href="terms.html" class="hover:text-green-400">Terms</a>
+    <a href="privacy-policy.html" class="hover:text-green-400">Privacy</a>
+    <a href="faq.html" class="hover:text-green-400">FAQ</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  // Logout logic
+  function logout() {
+    firebase.auth().signOut().then(() => {
+      localStorage.removeItem('user');
+      window.location.href = "login.html";
+    });
+  }
+
+  // Redirect to login if not authenticated
+  window.onload = () => {
+    const user = localStorage.getItem('user');
+    if (!user) window.location.href = "login.html";
+  };
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnrOBOoAas9DD_FiGJYLLz1RUqT_Clkvg",
+    authDomain: "careerlink-ebeed.firebaseapp.com",
+    projectId: "careerlink-ebeed",
+    storageBucket: "careerlink-ebeed.appspot.com",
+    messagingSenderId: "311863050655",
+    appId: "1:311863050655:web:a12a4cd36014e5e577bdaa",
+    measurementId: "G-JR4PQD3EKL"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init(); feather.replace();</script>
+</body>
+</html>

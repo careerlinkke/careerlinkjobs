@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Details | CareerLink</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/heroicons@1.0.6/outline/heroicons.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBnrOBOoAas9DD_FiGJYLLz1RUqT_Clkvg",
+      authDomain: "careerlink-ebeed.firebaseapp.com",
+      projectId: "careerlink-ebeed",
+      storageBucket: "careerlink-ebeed.appspot.com",
+      messagingSenderId: "311863050655",
+      appId: "1:311863050655:web:a12a4cd36014e5e577bdaa",
+      measurementId: "G-JR4PQD3EKL"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.auth().onAuthStateChanged(user => {
+      if (!user) window.location.href = "login.html";
+    });
+  </script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+  <nav class="bg-green-600 text-white p-4 flex justify-between items-center">
+    <a href="home.html" class="text-2xl font-bold">CareerLink</a>
+    <div class="space-x-4">
+      <a href="home.html" class="hover:underline">Home</a>
+      <a href="jobs.html" class="hover:underline">Jobs</a>
+      <a href="profile.html" class="hover:underline">Profile</a>
+      <a href="#" onclick="logout()" class="hover:underline">Logout</a>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto py-10 px-6">
+    <div id="jobDetail" class="bg-white dark:bg-gray-800 shadow-md rounded-md p-6"></div>
+    <div class="mt-6">
+      <button id="applyBtn" class="bg-green-600 text-white px-5 py-3 rounded hover:bg-green-700">
+        Apply Now
+      </button>
+    </div>
+  </main>
+
+  <footer class="mt-10 bg-green-700 text-white text-center py-4">
+    <p>&copy; 2025 CareerLink. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        localStorage.clear();
+        window.location.href = 'index.html';
+      });
+    }
+
+    const queryParams = new URLSearchParams(window.location.search);
+    const jobId = queryParams.get('id');
+    const jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
+    const selectedJob = jobs.find(job => job.id === jobId);
+    const detailDiv = document.getElementById("jobDetail");
+
+    if (selectedJob) {
+      detailDiv.innerHTML = `
+        <h1 class="text-3xl font-bold mb-4">${selectedJob.title}</h1>
+        <p class="text-lg"><strong>Company:</strong> ${selectedJob.company}</p>
+        <p class="text-lg"><strong>Location:</strong> ${selectedJob.location}</p>
+        <p class="text-lg"><strong>Salary:</strong> ${selectedJob.salary}</p>
+        <p class="mt-4">${selectedJob.description}</p>
+      `;
+    } else {
+      detailDiv.innerHTML = `<p class="text-red-500">Job not found.</p>`;
+      document.getElementById("applyBtn").style.display = "none";
+    }
+
+    document.getElementById("applyBtn").addEventListener("click", () => {
+      window.location.href = `application.html?id=${jobId}`;
+    });
+  </script>
+</body>
+</html>

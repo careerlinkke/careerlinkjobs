@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CareerLink | Terms of Service</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-gray-800 p-4 flex justify-between items-center shadow">
+    <a href="home.html" class="text-green-400 font-bold text-xl">CareerLink</a>
+    <ul class="flex space-x-4 text-sm">
+      <li><a href="jobs.html" class="hover:text-green-400">Jobs</a></li>
+      <li><a href="profile.html" class="hover:text-green-400">Profile</a></li>
+      <li><a href="faq.html" class="hover:text-green-400">FAQ</a></li>
+      <li><a href="terms.html" class="text-green-400 font-semibold">Terms</a></li>
+      <li><a href="#" id="logoutBtn" class="hover:text-red-500">Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Header -->
+  <header class="bg-gray-800 py-12 px-6 text-center" data-aos="fade-down">
+    <h1 class="text-3xl font-bold text-green-400">Terms of Service</h1>
+    <p class="text-gray-300 mt-2">Updated: July 2025</p>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-4xl mx-auto px-6 py-10 space-y-8" data-aos="fade-up">
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">1. Introduction</h2>
+      <p class="text-gray-300 mt-2">By accessing and using the CareerLink platform, you agree to the following terms and conditions. These terms govern your use of the website, applications, and services we provide.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">2. User Accounts</h2>
+      <p class="text-gray-300 mt-2">Users must register and provide accurate information. You are responsible for keeping your account secure. CareerLink will not be liable for unauthorized access caused by user negligence.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">3. Job Applications & Payments</h2>
+      <ul class="text-gray-300 list-disc ml-5 mt-2 space-y-2">
+        <li>Job seekers may be required to pay application fees depending on the job type.</li>
+        <li>Fees include: KSh 950 for Direct Placement, KSh 350 for Interview Booking, and other specific job-related charges.</li>
+        <li>All payments are non-refundable unless the job post is canceled or unavailable within 24 hours after payment.</li>
+        <li>CareerLink does not guarantee employment but facilitates job connections with verified employers.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">4. Employer Responsibilities</h2>
+      <ul class="text-gray-300 list-disc ml-5 mt-2 space-y-2">
+        <li>Employers must only post genuine job opportunities with full details.</li>
+        <li>Premium job posts require payment (KSh 550) and will be featured for 7 days.</li>
+        <li>Misuse of the platform or posting fraudulent listings will result in account suspension.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">5. Prohibited Activities</h2>
+      <p class="text-gray-300 mt-2">Users are not allowed to:
+        <ul class="list-disc ml-5 mt-2 space-y-1">
+          <li>Impersonate others or provide false information</li>
+          <li>Spam employers or users with unsolicited offers</li>
+          <li>Attempt to hack, exploit, or abuse platform vulnerabilities</li>
+        </ul>
+      </p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">6. Privacy</h2>
+      <p class="text-gray-300 mt-2">We take your privacy seriously. Please read our <a href="privacy-policy.html" class="text-green-400 underline">Privacy Policy</a> to understand how your data is collected, used, and protected.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">7. Modifications</h2>
+      <p class="text-gray-300 mt-2">We may modify these terms at any time. Continued use of the platform indicates your agreement to any changes. Major changes will be communicated via email or user dashboard.</p>
+    </section>
+
+    <section>
+      <h2 class="text-xl font-semibold text-green-400">8. Contact Us</h2>
+      <p class="text-gray-300 mt-2">For any questions regarding these terms, reach us via WhatsApp at <a href="https://wa.me/254102960463" class="text-green-400 underline">+254102960463</a> or email <a href="mailto:careerlinkke@gmail.com" class="text-green-400 underline">careerlinkke@gmail.com</a>.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center text-gray-400 py-6 text-sm">
+    &copy; 2025 CareerLink. All rights reserved. | 
+    <a href="privacy-policy.html" class="text-green-400 hover:underline">Privacy Policy</a> | 
+    <a href="faq.html" class="text-green-400 hover:underline">FAQ</a>
+  </footer>
+
+  <script>
+    // Auth check
+    const isUser = localStorage.getItem("careerlinkUser");
+    if (!isUser) window.location.href = "login.html";
+
+    // Logout
+    document.getElementById("logoutBtn").onclick = () => {
+      localStorage.removeItem("careerlinkUser");
+      window.location.href = "login.html";
+    };
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init(); feather.replace();</script>
+</body>
+</html>

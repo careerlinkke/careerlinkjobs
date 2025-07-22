@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerLink | Chat Support</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/9f3b6fe7f0.js" crossorigin="anonymous"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+    <a href="home.html" class="text-2xl font-bold text-green-600">CareerLink</a>
+    <div class="space-x-4">
+      <a href="home.html" class="hover:text-green-500">Home</a>
+      <a href="jobs.html" class="hover:text-green-500">Browse Jobs</a>
+      <a href="profile.html" class="hover:text-green-500">Profile</a>
+      <a href="#" onclick="logout()" class="text-red-500 font-semibold">Logout</a>
+    </div>
+  </nav>
+
+  <!-- Chat Section -->
+  <section class="max-w-4xl mx-auto mt-10 bg-white rounded shadow-lg p-6">
+    <h2 class="text-2xl font-semibold mb-4 text-green-600">Live Chat Support</h2>
+
+    <div id="chatBox" class="h-80 overflow-y-scroll border rounded p-4 mb-4 bg-gray-50">
+      <!-- Messages will appear here -->
+    </div>
+
+    <div class="flex">
+      <input type="text" id="chatInput" placeholder="Type your message..." class="flex-grow border px-4 py-2 rounded-l focus:outline-none">
+      <button onclick="sendMessage()" class="bg-green-600 text-white px-6 rounded-r">Send</button>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBnrOBOoAas9DD_FiGJYLLz1RUqT_Clkvg",
+      authDomain: "careerlink-ebeed.firebaseapp.com",
+      projectId: "careerlink-ebeed",
+      storageBucket: "careerlink-ebeed.appspot.com",
+      messagingSenderId: "311863050655",
+      appId: "1:311863050655:web:a12a4cd36014e5e577bdaa",
+      measurementId: "G-JR4PQD3EKL"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const auth = firebase.auth();
+
+    let currentUser;
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        currentUser = user;
+        listenForMessages();
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+
+    function sendMessage() {
+      const message = document.getElementById('chatInput').value;
+      if (message.trim() === "") return;
+
+      db.ref('chats').push({
+        user: currentUser.email,
+        message: message,
+        time: new Date().toISOString()
+      });
+
+      document.getElementById('chatInput').value = "";
+    }
+
+    function listenForMessages() {
+      const chatBox = document.getElementById("chatBox");
+      db.ref('chats').on('child_added', snapshot => {
+        const chat = snapshot.val();
+        const isCurrentUser = chat.user === currentUser.email;
+
+        const messageElement = document.createElement("div");
+        messageElement.className = isCurrentUser ? "text-right mb-2" : "text-left mb-2";
+        messageElement.innerHTML = `
+          <div class="${isCurrentUser ? 'bg-green-100' : 'bg-gray-200'} inline-block px-3 py-2 rounded">
+            <span class="block text-sm">${chat.message}</span>
+            <span class="text-xs text-gray-500">${chat.user.split('@')[0]}</span>
+          </div>
+        `;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
+    }
+
+    function logout() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = "index.html";
+      });
+    }
+  </script>
+
+</body>
+</html>

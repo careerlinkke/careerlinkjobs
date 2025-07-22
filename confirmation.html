@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareerLink | Confirmation</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <div class="flex items-center justify-center h-screen px-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full text-center animate-fadeIn">
+      <lottie-player 
+        src="https://assets4.lottiefiles.com/packages/lf20_b88nh30c.json"  
+        background="transparent"  
+        speed="1"  
+        style="width: 100px; height: 100px; margin: auto;"  
+        loop  
+        autoplay>
+      </lottie-player>
+      <h2 class="text-2xl font-bold text-green-600 mt-4 mb-2">Application Received!</h2>
+      <p id="paymentTypeText" class="text-sm text-gray-700 mb-4">Processing payment details...</p>
+      <p class="text-sm text-gray-600 mb-6">
+        We have received your request. Our team will confirm the payment and get back to you shortly with the next steps.
+      </p>
+      <a href="home.html" class="inline-block mt-4 bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    // Read payment type from URL query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const paymentType = urlParams.get("type");
+    const paymentText = document.getElementById("paymentTypeText");
+
+    if (paymentType === "direct") {
+      paymentText.textContent = "Payment Type: Direct Placement – KSh 950";
+    } else if (paymentType === "interview") {
+      paymentText.textContent = "Payment Type: Interview Booking – KSh 350";
+    } else if (paymentType === "featured") {
+      paymentText.textContent = "Payment Type: Featured Job Application – KSh 1,150";
+    } else if (paymentType === "pairing") {
+      paymentText.textContent = "Payment Type: Job Pairing – KSh 750";
+    } else {
+      paymentText.textContent = "Payment Type: Standard Processing";
+    }
+  </script>
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out;
+    }
+  </style>
+
+</body>
+</html>

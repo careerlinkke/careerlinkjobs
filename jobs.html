@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareerLink | Browse Jobs</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+  <!-- Redirect if not logged in -->
+  <script>
+    const user = localStorage.getItem("user");
+    if (!user) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- Navigation -->
+  <header class="bg-gray-800 shadow sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="home.html" class="text-green-400 text-2xl font-bold">CareerLink</a>
+      <nav class="space-x-4 hidden md:block">
+        <a href="home.html" class="hover:text-green-400">Home</a>
+        <a href="jobs.html" class="text-green-400 font-semibold">Browse Jobs</a>
+        <a href="profile.html" class="hover:text-green-400">Profile</a>
+        <a href="chat.html" class="hover:text-green-400">Chat</a>
+        <a href="faq.html" class="hover:text-green-400">FAQ</a>
+        <a href="contact.html" class="hover:text-green-400">Contact</a>
+        <button onclick="logout()" class="bg-red-600 px-3 py-1 rounded hover:bg-red-700 text-sm">Logout</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Jobs Section -->
+  <section class="max-w-6xl mx-auto py-10 px-4">
+    <h1 class="text-3xl font-bold text-center mb-10">Available Jobs</h1>
+    <div id="jobList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-center py-6 mt-10 text-sm text-gray-400">
+    &copy; 2025 CareerLink. All rights reserved.
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const jobs = [
+      { id: 1, title: "Customer Care Assistant", location: "Nairobi", salary: "KSh 30,000", type: "Full Time" },
+      { id: 2, title: "Sales Executive", location: "Westlands", salary: "KSh 35,000", type: "Contract" },
+      { id: 3, title: "Receptionist", location: "Kilimani", salary: "KSh 28,000", type: "Full Time" },
+      { id: 4, title: "Cleaner", location: "South C", salary: "KSh 25,000", type: "Full Time" },
+      { id: 5, title: "Storekeeper", location: "CBD", salary: "KSh 30,000", type: "Full Time" },
+      { id: 6, title: "Cook", location: "Parklands", salary: "KSh 32,000", type: "Full Time" },
+      { id: 7, title: "Data Entry Clerk", location: "Donholm", salary: "KSh 38,000", type: "Part Time" },
+      { id: 8, title: "Shop Attendant", location: "Eastleigh", salary: "KSh 27,000", type: "Full Time" },
+      { id: 9, title: "Office Messenger", location: "Ngong Road", salary: "KSh 26,000", type: "Full Time" },
+      { id: 10, title: "Security Guard", location: "Rongai", salary: "KSh 29,000", type: "Full Time" },
+      { id: 11, title: "Barista", location: "Westlands", salary: "KSh 30,000", type: "Full Time" },
+      { id: 12, title: "Delivery Rider", location: "Langata", salary: "KSh 34,000", type: "Contract" },
+      { id: 13, title: "Housekeeper", location: "Karen", salary: "KSh 28,000", type: "Full Time" },
+      { id: 14, title: "Waiter/Waitress", location: "CBD", salary: "KSh 26,000", type: "Full Time" },
+      { id: 15, title: "IT Support Intern", location: "Upper Hill", salary: "KSh 20,000", type: "Internship" },
+      { id: 16, title: "Cashier", location: "Thika Road", salary: "KSh 30,000", type: "Full Time" },
+      { id: 17, title: "Nanny", location: "Runda", salary: "KSh 35,000", type: "Live-in" },
+      { id: 18, title: "HR Assistant", location: "Westlands", salary: "KSh 40,000", type: "Full Time" },
+      { id: 19, title: "Accounts Clerk", location: "CBD", salary: "KSh 45,000", type: "Full Time" },
+      { id: 20, title: "Tailor", location: "Gikomba", salary: "KSh 28,000", type: "Full Time" },
+      { id: 21, title: "Janitor", location: "Industrial Area", salary: "KSh 25,000", type: "Full Time" },
+      { id: 22, title: "Stock Controller", location: "Embakasi", salary: "KSh 30,000", type: "Full Time" },
+      { id: 23, title: "Dispatcher", location: "Airport", salary: "KSh 33,000", type: "Shift" },
+      { id: 24, title: "Customer Support Intern", location: "CBD", salary: "KSh 22,000", type: "Internship" },
+      { id: 25, title: "Gardener", location: "Lavington", salary: "KSh 27,000", type: "Full Time" },
+    ];
+
+    const jobList = document.getElementById("jobList");
+
+    jobs.forEach(job => {
+      const jobCard = document.createElement("div");
+      jobCard.className = "bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-green-400 transition";
+      jobCard.innerHTML = `
+        <h2 class="text-xl font-semibold text-green-400 mb-2">${job.title}</h2>
+        <p><i data-feather="map-pin" class="inline w-4 h-4"></i> ${job.location}</p>
+        <p><i data-feather="credit-card" class="inline w-4 h-4"></i> <strong>${job.salary}</strong></p>
+        <p><i data-feather="clock" class="inline w-4 h-4"></i> ${job.type}</p>
+        <a href="application.html?id=${job.id}" class="mt-4 inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Apply Now</a>
+      `;
+      jobList.appendChild(jobCard);
+    });
+
+    feather.replace();
+
+    function logout() {
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>
